@@ -46,7 +46,7 @@ namespace BasketTest
             [DynamicData("Baskets")]
             public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
             {
-            var amountTotal = 0;
+                var amountTotal = 0;
                 amountTotal = ImperativeProgramming.CalculateBasketAmount(basketTest.BasketLineArticles);
                 Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
             }
