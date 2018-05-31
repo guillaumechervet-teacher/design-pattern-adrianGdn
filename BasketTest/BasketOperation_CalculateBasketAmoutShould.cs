@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Basket;
+using Basket.OrientedObject.Domain;
+using Basket.OrientedObject.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -42,13 +44,23 @@ namespace BasketTest
                     };
                 }
         }
-            [TestMethod]
-            [DynamicData("Baskets")]
-            public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
-            {
-                var amountTotal = 0;
-                amountTotal = ImperativeProgramming.CalculateBasketAmount(basketTest.BasketLineArticles);
-                Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
-            }
+        // Old Method
+        /*[TestMethod]
+        [DynamicData("Baskets")]
+        public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
+        {
+            var amountTotal = 0;
+            amountTotal = ImperativeProgramming.CalculateBasketAmount(basketTest.BasketLineArticles);
+            Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
+        }*/
+        [TestMethod]
+        [DynamicData("Baskets")]
+        public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
+        {
+            var basKetService = new BasketService();
+            var basketOperation = new BasketOperation(basKetService);
+            var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
+            Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
+        }
     }
 }
