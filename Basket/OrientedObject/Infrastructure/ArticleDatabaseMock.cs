@@ -37,6 +37,16 @@ namespace Basket.OrientedObject.Infrastructure
                         Label = "chaise",
                         Category = "desktop"
                     };
+
+                case "4":
+                    return new ArticleDatabase
+                    {
+                        Id = "4",
+                        Price = 39,
+                        Stock = 55,
+                        Label = "Grumly",
+                        Category = "toy"
+                    };
                 default:
                     throw new NotImplementedException();
             }

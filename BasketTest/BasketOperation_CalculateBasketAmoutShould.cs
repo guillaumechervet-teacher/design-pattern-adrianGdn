@@ -24,25 +24,33 @@ namespace BasketTest
             get
             {
                 return new[]
-                { new object[] {
+                {
+                    new object[] {
                         new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
                             {
                                 new BasketLineArticle {Id = "1", Number = 12, Label = "Banana"},
                                 new BasketLineArticle {Id = "2", Number = 1, Label = "Fridgeelectrolux"},
-                                    new BasketLineArticle {Id = "3", Number = 4, Label = "Chair"}
+                                new BasketLineArticle {Id = "3", Number = 4, Label = "Chair"}
                             },
-                            ExpectedPrice = 84868}
-                        },
-                        new object[] {
-                            new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
-                                {
-                                    new BasketLineArticle {Id = "1", Number = 20, Label = "Banana"},
-                                    new BasketLineArticle {Id = "3", Number = 6, Label = "Chair"}
-                                },
-                                ExpectedPrice = 37520}
-                        },
-                    };
-                }
+                        ExpectedPrice = 84868}
+                    },
+                    new object[] {
+                        new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                            {
+                                new BasketLineArticle {Id = "1", Number = 20, Label = "Banana"},
+                                new BasketLineArticle {Id = "3", Number = 6, Label = "Chair"}
+                            },
+                            ExpectedPrice = 37520}
+                    },
+                    new object[] {
+                        new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                            {
+                                new BasketLineArticle {Id = "4", Number = 2, Label = "Grumly"},
+                            },
+                            ExpectedPrice = 8640}
+                    },
+                };
+            }
         }
         // Old Method
         /*[TestMethod]

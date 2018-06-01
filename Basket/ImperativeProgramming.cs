@@ -35,6 +35,10 @@ namespace Basket
                     case "desktop":
                         amount += articlePrice * 100 + articlePrice * 20;
                         break;
+                    case "toy":
+                        articlePrice -= 3;
+                        amount += articlePrice * 100 + articlePrice * 20;
+                        break;
                 }
 
                 amountTotal += amount * basketLineArticle.Number;
@@ -86,6 +90,15 @@ namespace Basket
                         Stock = 68,
                         Label = "Chair",
                         Category = "desktop"
+                    };
+                case "4":
+                    return new ArticleDatabase
+                    {
+                        Id = "4",
+                        Price = 39,
+                        Stock = 55,
+                        Label = "Grumly",
+                        Category = "toy"
                     };
                 default:
                     throw new NotImplementedException();
