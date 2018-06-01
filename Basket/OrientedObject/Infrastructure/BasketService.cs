@@ -11,13 +11,15 @@ namespace Basket.OrientedObject.Infrastructure
 {
     public class BasketService
     {
+        private IArticleDatabase articleDatabase;
         public OrientedObject.Domain.Basket GetBasket(IList<BasketLineArticle> lines)
         {
             Domain.Basket basket = new Domain.Basket();
             basket.Lines = new List<Line>();
+            
             foreach (var basketLineArticle in lines)
             {
-                var article = GetArticleFromDatabase(basketLineArticle.Id);
+                var article = articleDatabase.GetArticleFromDatabase(basketLineArticle.Id);
 
                 var line = new Line()
                 {
@@ -30,19 +32,9 @@ namespace Basket.OrientedObject.Infrastructure
             return basket;
         }
 
-
-        private static ArticleDatabase GetArticleFromDatabase(string id)
+        public BasketService(IArticleDatabase articleDatabase)
         {
-            // Retrive article from database
-            var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            var uri = new UriBuilder(codeBase);
-            var path = Uri.UnescapeDataString(uri.Path);
-            var assemblyDirectory = Path.GetDirectoryName(path);
-            var jsonPath = Path.Combine(assemblyDirectory, "article-database.json");
-            IList<ArticleDatabase> basketLineArticle = JsonConvert.DeserializeObject<List<ArticleDatabase>>(File.ReadAllText(jsonPath));
-            var article = basketLineArticle.First(articleDatabase => articleDatabase.Id == id);
-            return article;
+            this.articleDatabase = new ArticleDatabaseJson();
         }
-
     }
 }
