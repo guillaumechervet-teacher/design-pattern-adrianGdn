@@ -8,18 +8,16 @@ namespace Basket.OrientedObject.Domain
     /// <summary>
     /// 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
     /// </summary>
-    public class Line
+    public class ArticleToy : ArticleBase
     {
-        public string Id { get; set; }
-        public int Number { get; set; }
-        public string Label { get; set; }
-        public ArticleBase Article { get; set; }
-
-
-        public int Calculate()
+        public ArticleToy(string id, int price) : base(id, price)
         {
-            return Article.Calculate() * Number;
+        }
+        public override int Calculate()
+        {
+            int price = Price -3;
             // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
+            return (price * 100 + price * 20);
         }
     }
 }
