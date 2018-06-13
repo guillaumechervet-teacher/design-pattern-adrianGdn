@@ -27,34 +27,39 @@ namespace Basket.OrientedObject.Infrastructure
                 var article = articleDatabase.GetArticleFromDatabase(basketLineArticle.Id);
                 ArticleBase articleBase;
                 // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
-                /*var line = new Line()
-                {
-                    Article = new Article () {Category = article.Category, Price = article.Price},
-                    //Article = new ArticleBase(article.Id, article.Price);
-                    Number = basketLineArticle.Number
-                };*/
-                switch (article.Category)
-                {
-                    case "food":
-                        articleBase = new ArticleFood(article.Id, article.Price);
-                        break;
-                    case "electronic":
-                        articleBase = new ArticleElectronic(article.Id, article.Price);
-                        break;
-                    case "toy":
-                        articleBase = new ArticleToy(article.Id, article.Price);
-                        break;
-                    case "desktop":
-                        articleBase = new ArticleDesktop(article.Id, article.Price);
-                        break;
-                    default:
-                        articleBase = null;
-                        break;
-                }
-
-                basket.Lines.Add(new Line(articleBase, basketLineArticle.Number));
+                basket.Lines.Add(GetLine(basketLineArticle));
             }
             return basket;
+        }
+
+        public OrientedObject.Domain.Line GetLine(BasketLineArticle line)
+        {
+            Domain.Line theLineToReturn = new Line();
+
+            var article = articleDatabase.GetArticleFromDatabase(line.Id);
+            ArticleBase articleBase;
+            switch (article.Category)
+            {
+                case "food":
+                    articleBase = new ArticleFood(article.Id, article.Price);
+                    break;
+                case "electronic":
+                    articleBase = new ArticleElectronic(article.Id, article.Price);
+                    break;
+                case "toy":
+                    articleBase = new ArticleToy(article.Id, article.Price);
+                    break;
+                case "desktop":
+                    articleBase = new ArticleDesktop(article.Id, article.Price);
+                    break;
+                default:
+                    articleBase = null;
+                    break;
+            }
+
+            theLineToReturn = new Line(articleBase, line.Number);
+
+            return theLineToReturn;
         }
 
         public BasketService(IArticleDatabase articleDatabase)

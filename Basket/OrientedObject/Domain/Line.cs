@@ -21,6 +21,11 @@ namespace Basket.OrientedObject.Domain
             this.Number = number;
         }
 
+        public Line()
+        {
+
+        }
+
         public int Calculate()
         {
             return Article.Calculate() * Number;

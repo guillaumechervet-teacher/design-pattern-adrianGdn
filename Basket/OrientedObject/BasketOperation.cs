@@ -25,5 +25,11 @@ namespace Basket.OrientedObject.Domain
             return basket.CalculateAmount();
             // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
         }
+
+        public int CalculateLineAmount(BasketLineArticle line)
+        {
+            var price = _basketService.GetLine(line).Calculate();
+            return price; // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
+        }
     }
 }
