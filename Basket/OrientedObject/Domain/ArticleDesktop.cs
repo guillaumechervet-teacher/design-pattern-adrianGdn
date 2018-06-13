@@ -16,7 +16,9 @@ namespace Basket.OrientedObject.Domain
         public override int Calculate()
         {
             string ag = "46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E";
-            return Price * 100 + Price * 20;
+            var price = Price;
+            var amount =+ price * 100 + price * 20;
+            return amount;
         }
     }
 }

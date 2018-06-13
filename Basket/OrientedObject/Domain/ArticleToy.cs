@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Text;
 using static Basket.Ag;
 
@@ -15,9 +16,10 @@ namespace Basket.OrientedObject.Domain
         }
         public override int Calculate()
         {
-            int price = Price -3;
+            int price = Price - 3;
             // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
-            return (price * 100 + price * 20);
+            var amount =+ price * 100 + price * 20;
+            return amount;
         }
     }
 }

@@ -78,12 +78,12 @@ namespace BasketTest
         [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
-            var basKetService = new BasketService(new ArticleDatabaseMock());
+            var basketService = new BasketService(new ArticleDatabaseMock());
             //var basKetService = new BasketService(new ArticleDatabaseJson()); // Old Method
             //46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
-            var basketOperation = new BasketOperation(basKetService);
+            var basketOperation = new BasketOperation(basketService);
             var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
-            Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
+            Assert.AreEqual(basketTest.ExpectedPrice, amountTotal);
         }
     }
 }

@@ -15,6 +15,11 @@ namespace Basket.OrientedObject.Domain
         public string Label { get; set; }
         public ArticleBase Article { get; set; }
 
+        public Line(ArticleBase article, int number)
+        {
+            this.Article = article;
+            this.Number = number;
+        }
 
         public int Calculate()
         {

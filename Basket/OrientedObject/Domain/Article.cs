@@ -21,7 +21,7 @@ namespace Basket.OrientedObject.Domain
         {
             var amount = 0;
             var articlePrice = Price;
-            /*switch (Category)
+            switch (Category)
             {
                 case "food":
                     amount += articlePrice * 100 + articlePrice * 12;
@@ -38,7 +38,7 @@ namespace Basket.OrientedObject.Domain
                     break;
                 default:
                     throw new NotImplementedException();
-            }*/
+            }
 
             return amount;
         }
