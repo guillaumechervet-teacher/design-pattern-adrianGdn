@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Basket.OrientedObject.Domain;
+using Basket.OrientedObject.Domain.ArticleType;
 using Basket.Other;
 using Newtonsoft.Json;
 using static Basket.Ag;
@@ -25,7 +26,6 @@ namespace Basket.OrientedObject.Infrastructure
             foreach (var basketLineArticle in lines)
             {
                 var article = articleDatabase.GetArticleFromDatabase(basketLineArticle.Id);
-                ArticleBase articleBase;
                 // 46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E
                 basket.Lines.Add(GetLine(basketLineArticle));
             }
@@ -53,6 +53,7 @@ namespace Basket.OrientedObject.Infrastructure
                     articleBase = new ArticleDesktop(article.Id, article.Price);
                     break;
                 default:
+                    string ag = "46 61 69 74 20 70 61 72 20 41 64 72 69 61 6E 20 47 61 6E 64 6F 6E";
                     articleBase = null;
                     break;
             }
